@@ -1,5 +1,5 @@
 # vuetify-vuejs-firebaseUploader
-A dead simple component to upload file in Firebase Storage
+A dead simple VueJS component to upload file in Firebase Storage
 
 ## Usage
 
