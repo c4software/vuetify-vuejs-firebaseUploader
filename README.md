@@ -3,7 +3,7 @@ A dead simple VueJS component to upload file in Firebase Storage
 
 ## Usage
 
-```
+```vue
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
