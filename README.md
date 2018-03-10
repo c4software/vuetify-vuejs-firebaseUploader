@@ -8,6 +8,11 @@ A dead simple VueJS component to upload file in Firebase Storage
 - VueJS (>2)
 - Vuetify (>1.0.4)
 
+## Todo
+
+- Distribute on npm
+- Support drag and drop
+
 ## Usage
 
 ```vue
