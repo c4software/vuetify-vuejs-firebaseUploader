@@ -36,6 +36,7 @@ npm install vuetify-vuejs-firebaseuploader --save
 </template>
 
 <script>
+  import Vue from 'vue';
   import firebaseUploader from 'vuetify-vuejs-firebaseuploader';
   Vue.use(firebaseUploader);
 
