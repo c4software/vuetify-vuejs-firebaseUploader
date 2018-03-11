@@ -14,7 +14,8 @@ npm install vuetify-vuejs-firebaseuploader --save
 
 ## Todo
 
-- Support drag and drop
+- Remove confirmation.
+- Support drag and drop.
 
 ## Usage
 
