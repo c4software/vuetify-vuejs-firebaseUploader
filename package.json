@@ -1,12 +1,12 @@
 {
   "name": "vuetify-vuejs-firebaseuploader",
   "version": "0.0.1",
-  "description": "A dead simple component to upload file in Firebase Storage",
+  "description": "A dead simple Vue.js component to upload file to Firebase Storage",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "build": "vue build FirebaseUploader.vue -t lib -n index.js"
+    "build": "vue build FirebaseUploader.vue -t lib -n firebase-uploader.js"
   },
   "peerDependencies": {
     "vue": "^2.5.15",
