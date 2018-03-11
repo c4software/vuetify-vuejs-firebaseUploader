@@ -1,4 +1,5 @@
 # vuetify-vuejs-firebaseUploader
+
 A dead simple VueJS component to upload file in Firebase Storage
 
 ![Sample](./demo.png)
@@ -6,7 +7,6 @@ A dead simple VueJS component to upload file in Firebase Storage
 ## Installation
 
 npm install vuetify-vuejs-firebaseuploader --save
-
 
 ## Todo
 
