@@ -102,7 +102,7 @@
           if(m.type === 'file' && m.contentType.indexOf('image/') !== -1){
             this.defaultImage = m.downloadURLs[0];
           }
-        }).catch(err => {
+        }).catch(() => {
           this.loading = false;
           this.defaultImage = false;
         });
@@ -130,7 +130,7 @@
           this.getMetaData();
           this.loading = false;
           this.$emit('onUpload', this.targetPath());
-        }).catch(err => {
+        }).catch(() => {
           this.$emit('onUploadError', this.targetPath());
           this.loading = false;
         });
@@ -146,7 +146,7 @@
           this.hasFile = false;
           this.resetUpload();
           this.$emit('onDelete', this.targetPath());
-        }).catch(err => {
+        }).catch(() => {
           this.loading = false;
         });
       }
