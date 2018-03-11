@@ -1,5 +1,7 @@
 # vuetify-vuejs-firebaseUploader
 
+[![npm version](https://badge.fury.io/js/vuetify-vuejs-firebaseuploader.svg)](https://www.npmjs.com/package/vuetify-vuejs-firebaseuploader)
+
 A dead simple VueJS component to upload file in Firebase Storage
 
 ![Sample](./demo.png)
