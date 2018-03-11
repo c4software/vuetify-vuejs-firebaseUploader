@@ -3,10 +3,21 @@
     <v-card>
       <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
-      <v-card-actions>
+      <v-card-actions v-if="!this.hasFile">
         <input type="file" ref="loader" @change="onChangeLoader" hidden>
-        <v-btn flat v-if="!this.hasFile" :loading="loading" block @click="() => {this.$refs.loader.click()}">{{this.uploadFileLabel}}</v-btn>
-        <v-btn flat v-else :loading="loading" block @click="() => {this.deleteFile()}">{{this.deleteFileLabel}}</v-btn>
+        <v-btn flat :loading="loading" block @click="() => {this.$refs.loader.click()}">{{this.uploadFileLabel}}</v-btn>
+      </v-card-actions>
+      <v-card-actions v-else>
+        <v-flex sm6>
+          <v-btn flat block target="_blank" :href="this.fileLink">
+            <v-icon dark>file_download</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex sm6>
+          <v-btn flat block :loading="loading" @click="() => {this.deleteFile()}" :title="this.deleteFileLabel">
+            <v-icon dark>delete</v-icon>
+          </v-btn>
+        </v-flex>
       </v-card-actions>
     </v-card>
   </v-flex>
@@ -21,6 +32,7 @@
         loading: false,
         defaultImage: false,
         hasFile: false,
+        fileLink: ""
       }
     },
     created: function() {
@@ -97,6 +109,7 @@
       getMetaData: function() {
         this.loading = true;
         this.getFileRef().getMetadata().then(m => {
+          this.fileLink = m.downloadURLs[0];
           this.hasFile = true;
           this.loading = false;
           if(m.type === 'file' && m.contentType.indexOf('image/') !== -1){
