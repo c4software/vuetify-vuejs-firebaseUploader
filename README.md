@@ -3,10 +3,10 @@ A dead simple VueJS component to upload file in Firebase Storage
 
 ![Sample](./demo.png)
 
-## Requirements
+## Installation
 
-- VueJS (>2)
-- Vuetify (>1.0.4)
+npm install vuetify-vuejs-firebaseuploader --save
+
 
 ## Todo
 
@@ -36,11 +36,11 @@ A dead simple VueJS component to upload file in Firebase Storage
 </template>
 
 <script>
-  import firebaseUploader from '@/components/FirebaseUploader'
+  import firebaseUploader from 'vuetify-vuejs-firebaseuploader';
+  Vue.use(firebaseUploader);
 
   export default {
     name: 'event',
-    components: {firebaseUploader},
     getStorage: function(){
       return firebase.storage();
     },
@@ -54,5 +54,5 @@ A dead simple VueJS component to upload file in Firebase Storage
       console.log(path);
     }
   }
-</script>  
+</script>
 ```
