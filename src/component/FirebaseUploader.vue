@@ -1,10 +1,10 @@
 <template>
   <v-flex xs12 sm3>
-    <v-card>
+    <v-card @dragover.prevent @drop="onDropHandler">
       <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
-        <input type="file" ref="loader" v-bind:accept="acceptedFileFormat" @change="onChangeLoader" hidden>
+        <input type="file" ref="loader" @change="onChangeLoader" hidden>
         <v-btn flat :loading="loading" block @click="() => {this.$refs.loader.click()}">{{this.uploadFileLabel}}</v-btn>
       </v-card-actions>
       <v-card-actions v-else>
@@ -90,6 +90,9 @@
       }
     },
     methods:{
+      onDropHandler: function() {
+        //console.log(event);
+      },
       targetPath: function(){
         return this.path + '/' + this.targetFileName
       },
@@ -147,9 +150,9 @@
         this.getFileRef().put(file).then(() => {
           this.getMetaData();
           this.loading = false;
-          this.$emit('onUpload', this.targetPath());
+          this.$emit('onFileUpload', this.targetPath());
         }).catch(() => {
-          this.$emit('onUploadError', this.targetPath());
+          this.$emit('onFileUploadError', this.targetPath());
           this.loading = false;
         });
       },
@@ -162,8 +165,8 @@
           this.loading = false;
           this.defaultImage = false;
           this.hasFile = false;
+          this.$emit('onFileDelete', this.targetPath());
           this.resetUpload();
-          this.$emit('onDelete', this.targetPath());
         }).catch(() => {
           this.loading = false;
         });
