@@ -41,7 +41,7 @@
       }
     },
     created: function() {
-      this.getMetaData()()
+      this.getMetaData()
     },
     props: {
       /**
