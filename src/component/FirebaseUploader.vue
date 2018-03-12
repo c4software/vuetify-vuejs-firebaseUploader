@@ -1,6 +1,6 @@
 <template>
   <v-flex xs12 sm3>
-    <v-card @dragover.prevent @drop="onDropHandler">
+    <v-card>
       <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
       <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
@@ -92,9 +92,6 @@
       }
     },
     methods:{
-      onDropHandler: function() {
-        console.log(event);
-      },
       targetPath: function(){
         return this.path + '/' + this.targetFileName
       },
