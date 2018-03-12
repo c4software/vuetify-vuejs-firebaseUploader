@@ -4,7 +4,7 @@
       <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
-        <input type="file" ref="loader" @change="onChangeLoader" hidden>
+        <input type="file" ref="loader" v-bind:accept="acceptedFileFormat" @change="onChangeLoader" hidden>
         <v-btn flat :loading="loading" block @click="() => {this.$refs.loader.click()}">{{this.uploadFileLabel}}</v-btn>
       </v-card-actions>
       <v-card-actions v-else>
@@ -33,6 +33,11 @@
         defaultImage: false,
         hasFile: false,
         fileLink: ""
+      }
+    },
+    computed: {
+      acceptedFileFormat: function() {
+        return this.limitToType.join(',');
       }
     },
     created: function() {
