@@ -2,6 +2,7 @@
   <v-flex xs12 sm3>
     <v-card @dragover.prevent @drop="onDropHandler">
       <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
+      <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
         <input type="file" ref="loader" @change="onChangeLoader" hidden>
@@ -32,6 +33,7 @@
         loading: false,
         defaultImage: false,
         hasFile: false,
+        filename: "",
         fileLink: ""
       }
     },
@@ -91,7 +93,7 @@
     },
     methods:{
       onDropHandler: function() {
-        //console.log(event);
+        console.log(event);
       },
       targetPath: function(){
         return this.path + '/' + this.targetFileName
@@ -117,6 +119,7 @@
       getMetaData: function() {
         this.loading = true;
         this.getFileRef().getMetadata().then(m => {
+          this.filename = m.name;
           this.fileLink = m.downloadURLs[0];
           this.hasFile = true;
           this.loading = false;
