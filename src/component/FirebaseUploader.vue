@@ -1,8 +1,10 @@
 <template>
   <v-flex xs12 sm3>
     <v-card>
-      <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
-      <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
+      <v-template v-if="this.hasFile">
+        <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
+        <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
+      </v-template>
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
         <input type="file" ref="loader" @change="onChangeLoader" hidden>
