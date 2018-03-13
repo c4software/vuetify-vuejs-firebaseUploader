@@ -165,6 +165,8 @@
           this.loading = false;
           this.defaultImage = false;
           this.hasFile = false;
+          this.filename = "";
+          this.fileLink = "";
           this.$emit('onFileDelete', this.targetPath());
           this.resetUpload();
         }).catch(() => {
