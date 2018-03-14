@@ -32,6 +32,7 @@ npm install vuetify-vuejs-firebaseuploader --save
         unsuportedMediaTypeLabel="Invalide file format"
         :limitToType="['image/png']"
         :previewMediaContain="false"
+        responsiveGrid="sm12"
         @onFileUpload="onUpload"
         @onFileDelete="onDelete"
         @onFileUploadError="onUploadError"
