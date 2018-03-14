@@ -7,7 +7,7 @@
       </template>
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
-        <input type="file" ref="loader" @change="onChangeLoader" hidden>
+        <input type="file" ref="loader" @change="onChangeLoader" v-bind:accept="acceptedFileFormat" hidden>
         <v-btn flat :loading="loading" block @click="() => this.$refs.loader.click()">{{this.uploadFileLabel}}</v-btn>
       </v-card-actions>
       <v-card-actions v-else>
