@@ -2,7 +2,7 @@
   <v-flex xs12 sm3>
     <v-card>
       <template v-if="this.hasFile">
-        <v-card-media v-if="this.defaultImage !== false" :src="this.defaultImage" height="200px" />
+        <v-card-media v-if="this.defaultImage !== false" :contain="this.previewMediaContain" :src="this.defaultImage" height="200px" />
         <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
       </template>
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
@@ -93,6 +93,13 @@
         default: function() {
           return []
         },
+      },
+      /**
+       * Force the ratio of the image preview
+       */
+      previewMediaContain:{
+        type: Boolean,
+        default: false
       }
     },
     methods:{
