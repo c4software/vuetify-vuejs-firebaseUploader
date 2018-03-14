@@ -8,7 +8,7 @@
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
         <input type="file" ref="loader" @change="onChangeLoader" hidden>
-        <v-btn flat :loading="loading" block @click="() => {this.$refs.loader.click()}">{{this.uploadFileLabel}}</v-btn>
+        <v-btn flat :loading="loading" block @click="() => this.$refs.loader.click()">{{this.uploadFileLabel}}</v-btn>
       </v-card-actions>
       <v-card-actions v-else>
         <v-flex sm6>
@@ -17,7 +17,7 @@
           </v-btn>
         </v-flex>
         <v-flex sm6>
-          <v-btn flat block :loading="loading" @click="() => {this.deleteFile()}" :title="this.deleteFileLabel">
+          <v-btn flat block :loading="loading" @click="() => this.deleteFile()" :title="this.deleteFileLabel">
             <v-icon dark>delete</v-icon>
           </v-btn>
         </v-flex>
@@ -29,7 +29,7 @@
 <script>
   export default {
     name: "FirebaseUploader",
-    data: () => {
+    data: function() {
       return {
         hasError: false,
         loading: false,
@@ -90,7 +90,9 @@
        */
       limitToType: {
         type: Array,
-        default: () => {return []},
+        default: function() {
+          return []
+        },
       }
     },
     methods:{
@@ -117,7 +119,7 @@
       },
       getMetaData: function() {
         this.loading = true;
-        this.getFileRef().getMetadata().then(m => {
+        this.getFileRef().getMetadata().then((m) => {
           this.filename = m.name;
           this.fileLink = m.downloadURLs[0];
           this.hasFile = true;
