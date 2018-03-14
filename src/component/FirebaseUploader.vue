@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 sm3>
+  <v-flex :class="this.responsiveGrid">
     <v-card>
       <template v-if="this.hasFile">
         <v-card-media v-if="this.defaultImage !== false" :contain="this.previewMediaContain" :src="this.defaultImage" height="200px" />
@@ -100,6 +100,13 @@
       previewMediaContain:{
         type: Boolean,
         default: false
+      },
+      /**
+       * Reponsive Grid properties
+       */
+      responsiveGrid:{
+        type: String,
+        default: "xs12 sm3"
       }
     },
     methods:{
