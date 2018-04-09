@@ -47,6 +47,14 @@
     created: function() {
       this.getMetaData()
     },
+    watch: {
+      path: function(){
+        this.getMetaData()
+      },
+      storage: function(){
+        this.getMetaData()
+      }
+    },
     props: {
       /**
        * Labels
