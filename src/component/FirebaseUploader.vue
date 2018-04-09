@@ -152,6 +152,9 @@
         }).catch(() => {
           this.loading = false;
           this.defaultImage = false;
+          this.hasFile = false;
+          this.filename = "";
+          this.fileLink = "";
         });
       },
       /**
