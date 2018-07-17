@@ -139,17 +139,18 @@
           this.uploadFile(event.target.files[0]);
         }
       },
-      getMetaData: function() {
+      getMetaData: function () {
         this.loading = true;
-        this.getFileRef().getMetadata().then((m) => {
+        this.getFileRef().getMetadata().then(async (m) => {
           this.filename = m.name;
-          this.fileLink = m.downloadURLs[0];
+          this.fileLink = await this.getFileRef().getDownloadURL();
           this.hasFile = true;
           this.loading = false;
-          if(m.type === 'file' && m.contentType.indexOf('image/') !== -1){
-            this.defaultImage = m.downloadURLs[0];
+          if (m.type === 'file' && m.contentType.indexOf('image/') !== -1) {
+            this.defaultImage = await this.getFileRef().getDownloadURL();
           }
-        }).catch(() => {
+        }).catch((err) => {
+          console.log("Error", err);
           this.loading = false;
           this.defaultImage = false;
           this.hasFile = false;
