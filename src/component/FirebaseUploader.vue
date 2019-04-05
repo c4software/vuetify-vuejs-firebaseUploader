@@ -2,7 +2,7 @@
   <v-flex :class="this.responsiveGrid">
     <v-card>
       <template v-if="this.hasFile">
-        <v-card-media v-if="this.defaultImage !== false" :contain="this.previewMediaContain" :src="this.defaultImage" height="200px" />
+        <v-img v-if="this.defaultImage !== false" :contain="this.previewMediaContain" :src="this.defaultImage" height="200px" />
         <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
       </template>
       <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
