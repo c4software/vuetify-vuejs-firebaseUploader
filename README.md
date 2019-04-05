@@ -56,9 +56,6 @@ npm install vuetify-vuejs-firebaseuploader --save
     },
     onDelete: function(path){
       console.log(path);
-    },
-    onDelete: function(path){
-      console.log(path);
     }
   }
 </script>
