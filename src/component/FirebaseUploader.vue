@@ -5,19 +5,19 @@
         <v-img v-if="this.defaultImage !== false" :contain="this.previewMediaContain" :src="this.defaultImage" height="200px" />
         <v-card-text v-else class="text-sm-center overflow-hidden">{{this.filename}}</v-card-text>
       </template>
-      <v-alert outline color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
+      <v-alert outlined color="error" icon="warning" :value="hasError">{{this.unsuportedMediaTypeLabel}}</v-alert>
       <v-card-actions v-if="!this.hasFile">
         <input type="file" ref="loader" @change="onChangeLoader" v-bind:accept="acceptedFileFormat" hidden>
-        <v-btn flat :loading="loading" block @click="() => this.$refs.loader.click()">{{this.uploadFileLabel}}</v-btn>
+        <v-btn text :loading="loading" block @click="() => this.$refs.loader.click()">{{this.uploadFileLabel}}</v-btn>
       </v-card-actions>
       <v-card-actions v-else>
         <v-flex sm6>
-          <v-btn flat block target="_blank" :href="this.fileLink">
+          <v-btn text block target="_blank" :href="this.fileLink">
             <v-icon dark>file_download</v-icon>
           </v-btn>
         </v-flex>
         <v-flex sm6>
-          <v-btn flat block :loading="loading" @click="() => this.deleteFile()" :title="this.deleteFileLabel">
+          <v-btn text block :loading="loading" @click="() => this.deleteFile()" :title="this.deleteFileLabel">
             <v-icon dark>delete</v-icon>
           </v-btn>
         </v-flex>

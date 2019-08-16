@@ -1,6 +1,6 @@
 {
   "name": "vuetify-vuejs-firebaseuploader",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "A dead simple Vue.js component to upload file to Firebase Storage",
   "main": "dist/index.js",
   "dependencies": {},
@@ -24,8 +24,8 @@
     "build": "rm -rf dist && NODE_ENV=production webpack --mode production"
   },
   "peerDependencies": {
-    "vue": "^2.5.15",
-    "vuetify": "^1.0.6"
+    "vue": "^2.6.10",
+    "vuetify": "^2.0.7"
   },
   "repository": {
     "type": "git",
